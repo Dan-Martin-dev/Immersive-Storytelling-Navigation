@@ -1,0 +1,135 @@
+.
+├── assets
+│   ├── favicons
+│   │   ├── apple-touch-icon.png
+│   │   ├── favicon.ico
+│   │   └── favicon.svg
+│   ├── images
+│   │   ├── app-store.png
+│   │   ├── default.png
+│   │   ├── google-play.png
+│   │   └── hero-image.png
+│   └── styles
+│       └── tailwind.css
+├── components
+│   ├── blog
+│   │   ├── Grid.astro
+│   │   ├── GridItem.astro
+│   │   ├── Headline.astro
+│   │   ├── List.astro
+│   │   ├── ListItem.astro
+│   │   ├── Pagination.astro
+│   │   ├── RelatedPosts.astro
+│   │   ├── SinglePost.astro
+│   │   ├── Tags.astro
+│   │   └── ToBlogLink.astro
+│   ├── common
+│   │   ├── Analytics.astro
+│   │   ├── ApplyColorMode.astro
+│   │   ├── BasicScripts.astro
+│   │   ├── CommonMeta.astro
+│   │   ├── Image.astro
+│   │   ├── LenisScroll.astro
+│   │   ├── Metadata.astro
+│   │   ├── SiteVerification.astro
+│   │   ├── SocialShare.astro
+│   │   ├── SplitbeeAnalytics.astro
+│   │   ├── ToggleMenu.astro
+│   │   └── ToggleTheme.astro
+│   ├── CustomStyles.astro
+│   ├── Favicons.astro
+│   ├── Logo.astro
+│   ├── ui
+│   │   ├── Background.astro
+│   │   ├── Button.astro
+│   │   ├── DListItem.astro
+│   │   ├── Form.astro
+│   │   ├── Headline.astro
+│   │   ├── ItemGrid2.astro
+│   │   ├── ItemGrid.astro
+│   │   ├── Timeline.astro
+│   │   └── WidgetWrapper.astro
+│   └── widgets
+│       ├── Announcement.astro
+│       ├── BlogHighlightedPosts.astro
+│       ├── BlogLatestPosts.astro
+│       ├── Brands.astro
+│       ├── CallToAction.astro
+│       ├── Contact.astro
+│       ├── Content.astro
+│       ├── FAQs.astro
+│       ├── Features2.astro
+│       ├── Features3.astro
+│       ├── Features.astro
+│       ├── Footer.astro
+│       ├── Header.astro
+│       ├── Hero2.astro
+│       ├── Hero.astro
+│       ├── HeroText.astro
+│       ├── Note.astro
+│       ├── Pricing.astro
+│       ├── Stats.astro
+│       ├── Steps2.astro
+│       ├── Steps.astro
+│       └── Testimonials.astro
+├── comprehensive_structure.txt
+├── config.yaml
+├── constants.ts
+├── content
+│   └── config.ts
+├── data
+│   └── post
+│       ├── astrowind-template-in-depth.mdx
+│       ├── get-started-website-with-astro-tailwind-css.md
+│       ├── how-to-customize-astrowind-to-your-brand.md
+│       ├── landing.md
+│       ├── markdown-elements-demo-post.mdx
+│       └── useful-resources-to-create-websites.md
+├── env.d.ts
+├── folder_structure.txt
+├── layouts
+│   ├── LandingLayout.astro
+│   ├── Layout.astro
+│   ├── MarkdownLayout.astro
+│   └── PageLayout.astro
+├── navigation.ts
+├── pages
+│   ├── 404.astro
+│   ├── about.astro
+│   ├── [...blog]
+│   │   ├── [category]
+│   │   │   └── [...page].astro
+│   │   ├── index.astro
+│   │   ├── [...page].astro
+│   │   └── [tag]
+│   │       └── [...page].astro
+│   ├── contact.astro
+│   ├── homes
+│   │   ├── mobile-app.astro
+│   │   ├── personal.astro
+│   │   ├── saas.astro
+│   │   └── startup.astro
+│   ├── index.astro
+│   ├── landing
+│   │   ├── click-through.astro
+│   │   ├── lead-generation.astro
+│   │   ├── pre-launch.astro
+│   │   ├── product.astro
+│   │   ├── sales.astro
+│   │   └── subscription.astro
+│   ├── pricing.astro
+│   ├── privacy.md
+│   ├── rss.xml.ts
+│   ├── services.astro
+│   └── terms.md
+├── types.d.ts
+└── utils
+    ├── blog.ts
+    ├── directories.ts
+    ├── frontmatter.ts
+    ├── images-optimization.ts
+    ├── images.ts
+    ├── permalinks.ts
+    └── utils.ts
+
+20 directories, 112 files

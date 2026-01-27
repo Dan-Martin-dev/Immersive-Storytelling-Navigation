@@ -1,0 +1,170 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { Image } from 'astro:assets';
+/**
+ * Immersive Home Page
+ * 
+ * Implements high-end animations resembling follow.art:
+ * - GSAP & ScrollTrigger integration
+ * - Smooth Scroll (Lenis) - Inherited from Layout
+ * - Section Pinning & Scrubbing
+ * - Staggered Typography
+ * - Layered Stacking (Z-index overlays)
+ */
+
+const metadata = {
+  title: 'Immersive Experience',
+  ignoreTitleTemplate: true,
+};
+
+import heroImage from '~/assets/images/hero-image.png';
+---
+
+<Layout metadata={metadata}>
+  
+  <!-- Hero Section with Staggered Typography -->
+  <section id="hero-section" class="relative h-screen flex flex-col justify-center items-center overflow-hidden bg-page">
+    <div class="z-10 text-center px-4">
+      <h1 class="hero-text text-6xl md:text-8xl font-heading font-bold tracking-tighter mb-4 opacity-0 transform translate-y-10">
+        IMMERSIVE
+      </h1>
+      <h1 class="hero-text text-6xl md:text-8xl font-heading font-bold tracking-tighter mb-8 text-accent opacity-0 transform translate-y-10">
+        STORYTELLING
+      </h1>
+      <p class="hero-text text-xl md:text-2xl text-muted max-w-3xl mx-auto opacity-0 transform translate-y-10">
+        Experience the next generation of web interaction with fluid animations and seamless transitions.
+      </p>
+    </div>
+    
+    <!-- Background Abstract Element -->
+    <div class="absolute inset-0 z-0 pointer-events-none opacity-20 bg-gradient-to-tr from-blue-900 to-transparent"></div>
+  </section>
+
+  <!-- Pinned Section with Reveal Scrub -->
+  <section id="pinned-section" class="relative h-screen w-full overflow-hidden bg-slate-100 dark:bg-slate-900 flex items-center justify-center">
+    <div id="pinned-content" class="text-center relative z-10 w-full max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center h-full">
+      
+      <!-- Text Content -->
+      <div class="text-content">
+        <h2 class="text-4xl md:text-6xl font-bold mb-6 reveal-text">
+          Precision <br/> <span class="text-blue-600">Motion</span>
+        </h2>
+        <p class="text-lg text-slate-600 dark:text-slate-400 reveal-text max-w-md">
+          As you scroll, notice how the viewport locks. This section stays pinned while the elements inside react to your movement, scaling and revealing details.
+        </p>
+      </div>
+
+      <!-- Image Reveal Container -->
+      <div class="reveal-image-container relative w-full aspect-square md:aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl scale-50 opacity-0 transform-origin-center bg-white dark:bg-slate-800">
+        <div class="absolute inset-0 flex items-center justify-center">
+             <Image src={heroImage} alt="Reveal Image" class="w-full h-full object-cover" />
+        </div>
+        <div class="reveal-overlay absolute inset-0 bg-black/20"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Stacked Sections (Z-Index Layering) -->
+  <div class="stacked-container relative w-full pt-20 pb-20 bg-page">
+    
+    <!-- Stack Card 1 -->
+    <div class="stack-card sticky top-20 min-h-[80vh] bg-white dark:bg-slate-800 rounded-t-3xl shadow-[0_-5px_20px_rgba(0,0,0,0.1)] p-8 md:p-16 border-t border-slate-200 dark:border-slate-700 flex flex-col justify-center transform origin-top transition-transform duration-300">
+      <h3 class="text-3xl md:text-5xl font-bold mb-4">Layer 01</h3>
+      <p class="text-xl text-slate-500">This section stacks on top of the previous content.</p>
+    </div>
+
+    <!-- Stack Card 2 -->
+    <div class="stack-card sticky top-24 min-h-[80vh] bg-blue-50 dark:bg-slate-700 rounded-t-3xl shadow-[0_-5px_20px_rgba(0,0,0,0.1)] p-8 md:p-16 border-t border-slate-200 dark:border-slate-600 flex flex-col justify-center transform origin-top transition-transform duration-300">
+      <h3 class="text-3xl md:text-5xl font-bold mb-4 text-blue-700 dark:text-blue-300">Layer 02</h3>
+      <p class="text-xl text-slate-500 dark:text-slate-400">Notice the z-index overlay effect as you continue scrolling.</p>
+    </div>
+
+    <!-- Stack Card 3 -->
+    <div class="stack-card sticky top-28 min-h-[80vh] bg-black text-white rounded-t-3xl shadow-[0_-5px_20px_rgba(0,0,0,0.1)] p-8 md:p-16 border-t border-slate-800 flex flex-col justify-center transform origin-top transition-transform duration-300">
+      <h3 class="text-3xl md:text-5xl font-bold mb-4">Final Layer</h3>
+      <p class="text-xl text-slate-400">The stacking is complete. Seamless transition to the footer.</p>
+    </div>
+
+  </div>
+
+  <section class="min-h-[50vh] flex items-center justify-center">
+    <h2 class="text-3xl font-light">End of Experience</h2>
+  </section>
+
+</Layout>
+
+<script>
+  import gsap from 'gsap';
+  import ScrollTrigger from 'gsap/ScrollTrigger';
+
+  // Register ScrollTrigger
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener('astro:page-load', () => {
+    initAnimations();
+  });
+
+  // Fallback for initial load if astro:page-load isn't fired (e.g. non-transition mode)
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAnimations);
+  } else {
+    // Slight delay to ensure layout is ready
+    setTimeout(initAnimations, 100);
+  }
+
+  function initAnimations() {
+    
+    // 1. Staggered Typography Reveal (Hero)
+    const heroText = document.querySelectorAll('.hero-text');
+    if (heroText.length) {
+      gsap.to(heroText, {
+        y: 0,
+        opacity: 1,
+        duration: 1.2,
+        stagger: 0.2, // Stagger delays
+        ease: 'power3.out',
+        delay: 0.2
+      });
+    }
+
+    // 2. Section Pinning & Scrub (Pinned Section)
+    const pinnedSection = document.getElementById('pinned-section');
+    const revealImage = document.querySelector('.reveal-image-container');
+    
+    if (pinnedSection && revealImage) {
+      ScrollTrigger.create({
+        trigger: pinnedSection,
+        start: 'top top',
+        end: '+=150%', // Pin for 1.5x screen height
+        pin: true,
+        scrub: 1, // Smooth interaction
+        animation: gsap.fromTo(revealImage, 
+          { scale: 0.5, opacity: 0, rotation: 5 },
+          { scale: 1, opacity: 1, rotation: 0, ease: 'none' }
+        )
+      });
+    }
+
+    // 3. Stacked Cards Animation
+    // We can enhance the sticky CSS with some GSAP scaling for depth
+    const cards = document.querySelectorAll('.stack-card');
+    cards.forEach((card) => {
+        // Optional: Add scale down effect to previous cards as new ones overlap
+        // This gives a truer "stacking" feel similar to iOS modals or expensive sites
+        ScrollTrigger.create({
+            trigger: card,
+            start: "top top+=100", 
+            endTrigger: '.stacked-container',
+            end: "bottom bottom",
+            onEnter: () => {
+                 // Animate entry if needed
+            },
+            onLeave: () => {
+                // Determine logic for leaving
+            }
+        });
+    });
+  }
+
+</script>

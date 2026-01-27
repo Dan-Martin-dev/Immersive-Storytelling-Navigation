@@ -21,6 +21,10 @@ export const headerData = {
           text: 'Personal',
           href: getPermalink('/homes/personal'),
         },
+        {
+          text: 'Immersive Storytelling',
+          href: getPermalink('/immersive-home'),
+        },
       ],
     },
     {

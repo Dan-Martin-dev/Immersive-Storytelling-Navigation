@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'SuisseIntlCond';
+  src: url('/src/assets/fonts/SuisseIntlCond-Semibold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
 @layer utilities {
   .bg-page {
     background-color: var(--aw-color-bg-page);
